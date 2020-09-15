@@ -25,7 +25,7 @@ describe('App', () => {
   beforeEach(async () => {
     // await connection.query('DELETE FROM orders_products');
     // await connection.query('DELETE FROM orders');
-    // await connection.query('DELETE FROM products');
+    await connection.query('DELETE FROM products');
     await connection.query('DELETE FROM customers');
   });
 
@@ -71,8 +71,6 @@ describe('App', () => {
     expect(response.status).toBe(400);
   });
 
-  /*
-
   it('should be able to create a new product', async () => {
     const response = await request(app).post('/products').send({
       name: 'Produto 01',
@@ -112,6 +110,8 @@ describe('App', () => {
 
     expect(response.status).toBe(400);
   });
+
+  /*
 
   it('should be able to create a new order', async () => {
     const product = await request(app).post('/products').send({
