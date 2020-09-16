@@ -49,9 +49,9 @@ class CreateOrderService {
 
     if (productsWithInsuficientQuantities.length) {
       throw new AppError(
-        `Insuficient quantity for products ${productsWithInsuficientQuantities
+        `Insuficient quantity for products: '${productsWithInsuficientQuantities
           .map(product => product.name)
-          .join(', ')}.`,
+          .join("', '")}'.`,
       );
     }
 
@@ -65,6 +65,8 @@ class CreateOrderService {
       customer,
       products: productsInOrder,
     });
+
+    await this.productsRepository.updateQuantity(products);
 
     return order;
   }
