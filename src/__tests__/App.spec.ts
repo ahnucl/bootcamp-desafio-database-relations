@@ -263,8 +263,6 @@ describe('App', () => {
     );
   });
 
-  /*
-
   it('should be able to list one specific order', async () => {
     const customer = await request(app).post('/customers').send({
       name: 'Rocketseat',
@@ -308,6 +306,4 @@ describe('App', () => {
       }),
     );
   });
-
-  */
 });
