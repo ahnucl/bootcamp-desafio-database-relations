@@ -11,21 +11,21 @@ import {
 import Order from '@modules/orders/infra/typeorm/entities/Order';
 import Product from '@modules/products/infra/typeorm/entities/Product';
 
-// @Entity('orders_products')
+@Entity('orders_products')
 class OrdersProducts {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
   // TODO: Parece que com o segundo argumento do ManyToOne não precisa o JoinColumn, testar
 
-  // @ManyToOne(() => Order, order => order.order_products)
-  @ManyToOne(() => Order)
-  @JoinColumn({ name: 'order_products' })
+  // @ManyToOne(() => Order)
+  @ManyToOne(() => Order, order => order.order_products)
+  @JoinColumn({ name: 'order_id' })
   order: Order;
 
-  // @ManyToOne(() => Product, product => product.order_products)
-  @ManyToOne(() => Product)
-  @JoinColumn({ name: 'order_products' })
+  // @ManyToOne(() => Product)
+  @ManyToOne(() => Product, product => product.order_products)
+  @JoinColumn({ name: 'product_id' })
   product: Product;
 
   @Column()
