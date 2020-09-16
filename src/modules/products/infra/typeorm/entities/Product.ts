@@ -23,7 +23,7 @@ class Product {
   @Column()
   quantity: number;
 
-  // TODO: Esse campo é necessário ??
+  // @OneToMany(() => OrdersProducts, ordersProducts => ordersProducts.product)
   order_products: OrdersProducts[];
 
   @CreateDateColumn()
